@@ -1,4 +1,4 @@
-package fuzz
+package fuzznjson
 
 import "github.com/m7shapan/njson"
 

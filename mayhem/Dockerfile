@@ -8,8 +8,8 @@ RUN go get github.com/dvyukov/go-fuzz/go-fuzz-dep
 RUN apt update && apt install -y clang
 
 
-RUN go-fuzz-build -libfuzzer -o fuzz.a && \
-    clang -fsanitize=fuzzer fuzz.a -o fuzz.libfuzzer
+RUN go-fuzz-build -libfuzzer -o fuzznjson.a && \
+    clang -fsanitize=fuzzer fuzznjson.a -o fuzznjson.libfuzzer
 
 FROM debian:bookworm-slim
-COPY --from=builder /njson/mayhem/fuzz.libfuzzer /
+COPY --from=builder /njson/mayhem/fuzznjson.libfuzzer /
